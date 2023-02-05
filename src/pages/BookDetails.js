@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BookContext } from "../context/books";
 import { CartContext } from "../context/cart";
 
 const BookDetails = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const { books } = useContext(BookContext);
   const { addToCart } = useContext(CartContext);
 
@@ -32,7 +32,7 @@ const BookDetails = () => {
           className="btn"
           onClick={() => {
             addToCart({ ...book, id });
-            history.push("/cart");
+            history("/cart");
           }}
         >
           Add to Cart

@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/cart";
 import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const { cart, total, increaseAmount, decreaseAmount } = useContext(CartContext);
 
   if (!cart.length) {
@@ -38,7 +38,7 @@ const Cart = () => {
         <h3>Total: $ {total}</h3>
       </div>
       <div>
-        <button className="btn" onClick={() => history.push("/checkout")}>Checkout</button>
+        <button className="btn" onClick={() => history("/checkout")}>Checkout</button>
       </div>
     </section>
   );

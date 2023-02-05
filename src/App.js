@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Amplify
-import Amplify from "aws-amplify";
+import {Amplify} from "aws-amplify";
 
 // Pages
 import Home from "./pages/Home"
@@ -24,30 +24,24 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
+      <Routes>
+        <Route exact path="/" element={<Home/>}>
         </Route>
-        <Route path="/cart">
-          <Cart />
+        <Route path="/cart" element={<Cart/>}>
         </Route>
-        <Route path="/checkout">
-          <Checkout />
+        <Route path="/checkout" element={<Checkout/>}>
         </Route>
-        <Route exact path="/books">
-          <Books />
+        <Route exact path="/books" element={<Books/>}>
         </Route>
         <Route
           path="/books/:id"
-          children={<BookDetails></BookDetails>}>
+          element={<BookDetails></BookDetails>}>
         </Route>
-        <Route path="/admin">
-          <Admin />
+        <Route path="/admin" element={<Admin/>}>
         </Route>
-        <Route path="*">
-          <Error />
+        <Route path="*" element={<Error/>}>
         </Route>
-      </Switch>
+      </Routes>
     </Router>
   );
 }
